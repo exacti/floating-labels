@@ -5,7 +5,10 @@ Floating Labels for Bootstrap
 
 ## How to use
 
-First Include the stylesheet in your html.
+First Include the stylesheet in your html. If you prefers, use this CDN: https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css" media="screen">
+```
 Just put the input or textarea element inside a parent (div or span) with `.form-label-group` class and add a label tag after this element.
 The input and label must have the same id linked with for in label to work properly. 
 
