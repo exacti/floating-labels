@@ -35,6 +35,12 @@ The input and label must have the same id linked with for in label to work prope
 </div>
 ```
 
+### For intl-tel-input
+Make the label after input with JavaScript code, like this sample made with jQuery:
+```JavaScript
+$('.intl-tel-input ~ label').insertAfter('.intl-tel-input input.form-control');
+```
+
 ## Dependencies
 
 Works perfect with Bootstrap 4 but Bootstrap isn't required. Requires a browser compatible with [:placeholder-shown](https://caniuse.com/#feat=css-placeholder-shown) CSS pseudo-element.
