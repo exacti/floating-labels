@@ -81,7 +81,7 @@
 }
 
 .form-label-group .intl-tel-input label {
-    padding-left: 72px;
+    margin-left: 42px;
 }
 .form-label-group .intl-tel-input input:focus::placeholder{
     visibility: visible;
