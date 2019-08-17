@@ -1,6 +1,7 @@
 :root {
     --input-padding-x: .75rem;
     --input-padding-y: .7rem;
+    --placeholder-color: #6c757d;
 }
 .form-label-group {
     position: relative;
@@ -23,34 +24,36 @@
     display: block;
     width: 100%;
     margin-bottom: 0; /* Override default `<label>` margin */
-    color: #6c757d;
+    color: var(--placeholder-color);
     border-radius: .25rem;
     transition: all .2s ease-in-out;
     transform-origin: 0 100%;
     transform: translateY(-50%);
+    text-align: left;
+    visibility: hidden;
 }
 .form-label-group textarea ~ label {
     top: 0px;
     transform: translateY(0);
 }
 
-.form-label-group input::-webkit-input-placeholder {
+.form-label-group.transparent input::-webkit-input-placeholder {
     color: transparent;
 }
 
-.form-label-group input:-ms-input-placeholder {
+.form-label-group.transparent input:-ms-input-placeholder {
     color: transparent;
 }
 
-.form-label-group input::-ms-input-placeholder {
+.form-label-group.transparent input::-ms-input-placeholder {
     color: transparent;
 }
 
-.form-label-group input::-moz-placeholder {
+.form-label-group.transparent input::-moz-placeholder {
     color: transparent;
 }
 
-.form-label-group input::placeholder, .form-label-group textarea::placeholder {
+.form-label-group.transparent input::placeholder, .form-label-group.transparent textarea::placeholder {
     color: transparent;
 }
 
@@ -63,4 +66,24 @@
     font-size: 1em;
     top:4px;
     transform: translateY(-50%) scale(.7);
+    visibility: visible;
+}
+
+.form-label-group input:focus::placeholder, .form-label-group textarea:focus::placeholder {
+    visibility: hidden;
+    color: transparent;
+    transition-delay: 0s;
+}
+
+.form-label-group input::placeholder, .form-label-group textarea::placeholder {
+    transition-delay: .2s;
+    color: var(--placeholder-color);
+}
+
+.form-label-group .intl-tel-input label {
+    padding-left: 72px;
+}
+.form-label-group .intl-tel-input input:focus::placeholder{
+    visibility: visible;
+    color: var(--placeholder-color);
 }
