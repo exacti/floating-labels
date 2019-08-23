@@ -2,6 +2,7 @@
     --input-padding-x: .75rem;
     --input-padding-y: .7rem;
     --placeholder-color: #6c757d;
+    --top-position: 4px;
 }
 .form-label-group {
     position: relative;
@@ -64,7 +65,7 @@
 
 .form-label-group input:not(:placeholder-shown) ~ label, .form-label-group input:focus ~ label, .form-label-group textarea:not(:placeholder-shown) ~ label, .form-label-group textarea:focus ~ label {
     font-size: 1em;
-    top:4px;
+    top: var(--top-position);
     transform: translateY(-50%) scale(.7);
     visibility: visible;
 }
