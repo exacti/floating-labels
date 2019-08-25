@@ -81,10 +81,11 @@
     color: var(--placeholder-color);
 }
 
-.form-label-group .intl-tel-input label {
+.form-label-group .intl-tel-input label, .form-label-group .iti label {
     margin-left: 42px;
 }
-.form-label-group .intl-tel-input input:focus::placeholder{
+
+.form-label-group .intl-tel-input input:focus::placeholder, .form-label-group .iti input:focus::placeholder{
     visibility: visible;
     color: var(--placeholder-color);
 }
