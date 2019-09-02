@@ -35,6 +35,13 @@
     visibility: hidden;
     z-index: var(--label-z-index);
 }
+.form-label-group.form-control {
+    padding:0;
+}
+.form-label-group.form-control input {
+    border: none;
+    height: 99%;
+}
 .form-label-group textarea ~ label {
     top: 0px;
     transform: translateY(0);
