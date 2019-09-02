@@ -15,7 +15,8 @@
 
 .form-label-group input,
 .form-label-group textarea,
-.form-label-group label {
+.form-label-group label,
+.form-label-group select {
     padding: var(--input-padding-y) var(--input-padding-x);
 }
 
@@ -72,7 +73,11 @@
     padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group input:not(:placeholder-shown) ~ label, .form-label-group input:focus ~ label, .form-label-group textarea:not(:placeholder-shown) ~ label, .form-label-group textarea:focus ~ label {
+.form-label-group select {
+    padding-bottom: 0;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label, .form-label-group input:focus ~ label, .form-label-group textarea:not(:placeholder-shown) ~ label, .form-label-group textarea:focus ~ label, .form-label-group select ~ label {
     font-size: 1em;
     top: var(--top-position);
     transform: translateY(-50%) scale(.7);
