@@ -3,6 +3,7 @@
     --input-padding-y: .7rem;
     --placeholder-color: #6c757d;
     --top-position: 4px;
+    --label-z-index: 5;
 }
 .form-label-group {
     position: relative;
@@ -32,6 +33,7 @@
     transform: translateY(-50%);
     text-align: left;
     visibility: hidden;
+    z-index: var(--label-z-index);
 }
 .form-label-group textarea ~ label {
     top: 0px;
