@@ -1,11 +1,11 @@
 :root {
-    --input-padding-x: .75rem;
-    --input-padding-y: .7rem;
+    --input-padding-x: 1rem;
+    --input-padding-y: .5rem;
     --placeholder-color: #6c757d;
-    --top-position: 2px;
+    --top-position: 14px;
     --label-z-index: 5;
     --input-background-color: #ffffff;
-    --top-position-in-border: -4px;
+    --top-position-in-border: 5px;
 }
 .form-label-group {
     position: relative;
@@ -19,7 +19,7 @@
 .form-label-group input,
 .form-label-group textarea,
 .form-label-group label,
-.form-label-group select {
+.form-label-group:not(.in-border) select {
     padding: var(--input-padding-y) var(--input-padding-x);
 }
 
@@ -33,10 +33,10 @@
     color: var(--placeholder-color);
     border-radius: .25rem;
     transition: all .2s ease-in-out;
-    transform-origin: 0 100%;
+    transform-origin: 0 0;
     transform: translateY(-50%);
-    text-align: left;
-    visibility: hidden;
+    text-align: left;/* 
+    visibility: hidden; */
     z-index: var(--label-z-index);
 }
 .form-label-group.form-control {
@@ -76,7 +76,7 @@
     padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group select {
+.form-label-group:not(.in-border) select {
     padding-bottom: 0;
 }
 
@@ -104,7 +104,8 @@
 
 .form-label-group input::placeholder, .form-label-group textarea::placeholder {
     transition-delay: .2s;
-    color: var(--placeholder-color);
+    color: rgba(255, 255, 255, 0);
+    opacity: 0;
 }
 
 .form-label-group .intl-tel-input label, .form-label-group .iti label {
@@ -114,6 +115,7 @@
 .form-label-group .intl-tel-input input:focus::placeholder, .form-label-group .iti input:focus::placeholder{
     visibility: visible;
     color: var(--placeholder-color);
+    opacity: 1;
 }
 
 
@@ -130,7 +132,7 @@
 }
 
 .form-label-group.in-border input:not(:placeholder-shown) ~ label, .form-label-group.in-border input:focus ~ label, .form-label-group.in-border textarea:not(:placeholder-shown) ~ label, .form-label-group.in-border textarea:focus ~ label, .form-label-group.in-border select ~ label {
-    left: .6em;
+    left: calc(var(--input-padding-x)/10);
     top: var(--top-position-in-border);
     height: auto;
 }
@@ -142,16 +144,15 @@
     background: var(--input-background-color);
     height: 4px;
     top: 50%;
-    left: .2em;
-    right: .2em;
+    left: .7em;
+    right: .7em;
     z-index: -1;
 }
 
 .form-label-group.in-border input,
-.form-label-group.in-border label,
-.form-label-group.in-border select {
+.form-label-group.in-border label {
     
-    padding: 0 var(--input-padding-x);
+    padding: var(--input-padding-y) var(--input-padding-x);
     
 }
 
@@ -161,13 +162,6 @@
     padding: var(--input-padding-y) var(--input-padding-x);
 }
 
-.form-label-group.in-border textarea:not(:placeholder-shown) ~ label,.form-label-group.in-border textarea:focus ~ label {
-   /*  padding: calc(-1 * var(--input-padding-y)) var(--input-padding-x); */
-    /* margin: var(--input-padding-y) var(--input-padding-x); */
-    top: calc(1.85 * var(--top-position-in-border));
-    
-}
-
 .form-label-group.in-border input,
 .form-label-group.in-border textarea, 
 .form-label-group.in-border label,
@@ -175,3 +169,28 @@
     transition: all .2s linear, border-color .5s ease-in-out,box-shadow .5s ease-in-out;
 }
 
+
+.form-label-group.in-border .intl-tel-input input:not(:placeholder-shown) ~ label, .form-label-group.in-border .intl-tel-input input:focus ~ label, .form-label-group.in-border .iti input:not(:placeholder-shown) ~ label, .form-label-group.in-border .iti input:focus ~ label {
+    margin-left: 0px;
+}
+
+.form-label-group.iti-right .iti__flag-container {
+    right: 0;
+    left: auto;
+}
+
+.form-label-group.iti-right .iti--allow-dropdown input, .form-label-group.in-border.iti-right .iti--allow-dropdown input[type="tel"], .iti--allow-dropdown input[type="text"], .form-label-group.iti-right .iti--separate-dial-code input, .form-label-group.iti-right .iti--separate-dial-code input[type="tel"], .form-label-group.iti-right .iti--separate-dial-code input[type="text"] {
+    padding-left: var(--input-padding-x);
+}
+
+.form-label-group.iti-right .intl-tel-input label, .form-label-group.iti-right .iti label {
+    margin-left: auto;
+}
+
+.form-label-group.iti-right .iti__country-list {
+    right: 0px;
+}
+
+.form-label-group .iti__country-list {
+    z-index: calc(var(--label-z-index) + 2) !important;
+}

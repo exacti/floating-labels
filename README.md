@@ -1,7 +1,7 @@
 # floating-labels
 Floating Labels for Bootstrap
 
-![Sample without text input](https://i.imgur.com/JWEUrDi.png) ![Sample with text input](https://i.imgur.com/sro4kQC.png)
+![Sample text input](https://i.imgur.com/zGK4SkX.png) 
 
 ## How to use
 
