@@ -10,7 +10,10 @@ First Include the stylesheet in your html. If you prefers, use this CDN: https:/
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css" media="screen">
 ```
 Just put the input or textarea element inside a parent (div or span) with `.form-label-group` class and add a label tag after this element.
-The input and label must have the same id linked with for in label to work properly. 
+
+The input and label must have the same id linked with for in label to work properly. Input must have the `placeholder` defined.
+
+For in border style (like outlined material design), add the `.in-border` class. 
 
 #### Code samples
 
@@ -28,8 +31,9 @@ The input and label must have the same id linked with for in label to work prope
 </div>
 ```
 
+Like outlined material design (In Border):
 ```html
-<div class="form-label-group">
+<div class="form-label-group in-border">
     <input type="text" id="tt3" class="form-control form-control-lg" placeholder="Floating Label lg" />
     <label for="tt3">Floating Label lg</label>
 </div>
@@ -39,6 +43,14 @@ The input and label must have the same id linked with for in label to work prope
 Make the label after input with JavaScript code, like this sample made with jQuery:
 ```JavaScript
 $('.intl-tel-input ~ label').insertAfter('.intl-tel-input input.form-control');
+```
+
+Or this most advanced code (ideal for 2 or more elements):
+```JavaScript
+$('.intl-tel-input, .iti').find('input.form-control').each(function(index, element) {
+			let label = $(element).parent().find('~ label');
+			$(element).after(label);
+});
 ```
 
 ## Dependencies
