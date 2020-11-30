@@ -48,8 +48,8 @@ $('.intl-tel-input ~ label').insertAfter('.intl-tel-input input.form-control');
 Or this most advanced code (ideal for 2 or more elements):
 ```JavaScript
 $('.intl-tel-input, .iti').find('input.form-control').each(function(index, element) {
-			let label = $(element).parent().find('~ label');
-			$(element).after(label);
+	let label = $(element).parent().find('~ label');
+	$(element).after(label);
 });
 ```
 
