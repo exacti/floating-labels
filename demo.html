@@ -111,6 +111,36 @@
 						  <label for="ttsel2" >Floating Label</label>
 					</div>
 				</div>
+
+				<div class="col-md">
+					<h3 class="mt-5 mb-3">Float Outline</h3>
+
+					<div class="form-label-group outline">
+						<input type="text" id="tt8" class="form-control shadow-none" placeholder="Floating Label" />
+						<span><label for="tt8">Floating Label</label></span>
+					</div>
+
+					<div class="form-label-group outline">
+						<input type="text" id="tt9" class="form-control form-control-lg shadow-none" placeholder="Floating Label lg" />
+						<span><label for="tt9" class="form-control-lg">Floating Label lg</label></span>
+					</div>
+
+					<div class="form-label-group outline">
+						<textarea id="tt7" class="form-control shadow-none" placeholder="Floating Label area" rows="4"></textarea>
+						<span><label for="tt7">Floating Label area</label></span>
+					</div>
+
+
+					<div class="form-label-group outline">
+						<select class="custom-select" id="ttsel2">
+							<option selected>Choose...</option>
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+						  </select>
+						  <span><label for="ttsel2" >Floating Label</label></span>
+					</div>
+				</div>
 			</div>
 	
 			<h3 class="mt-5">Intl-tel-input</h3>
@@ -144,9 +174,39 @@
 						<label for="tel">Telefone</label>
 					</div>
 				</div>
+				
 			</div>
 			
+			<div class="row">
+				<div class="col-md">
+					<div class="card text-white bg-warning mx-auto mb-3" style="max-width: 18rem;">
+						<div class="card-header"><h4 class="m-0"> Float Outline</h4></div>
 
+						<div class="card-body">
+							<div class="form-label-group outline border-danger ">
+								<input name="tel[main]" type="tel" class="form-control border-white text-white" data-parsley-phone-validate id="tel4" placeholder="Telefone"  />
+								<span class="labe"><label for="tel4" class="text-white">Telefone</label></span>
+							</div>
+						</div>
+
+					</div>
+					
+					
+				</div>
+				<div class="col-md">
+					<div class="card text-white bg-dark mx-auto mb-3" style="max-width: 18rem;">
+						<div class="card-header"><h4 class="m-0">Right Float Outline</h4></div>
+
+						<div class="card-body">
+							<div class="form-label-group outline iti-right border-warning">
+								<input name="tel[main]" type="tel" class="form-control text-white" data-parsley-phone-validate id="tel4" placeholder="Telefone"  />
+								<span class="labe"><label for="tel4" class="text-white">Telefone</label></span>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
 			
 
 		</div>
@@ -200,7 +260,7 @@
 
 			
 			$('.intl-tel-input, .iti').find('input.form-control').each(function(index, element) {
-				let label = $(element).parent().find('~ label');
+				let label = $(element).parent().find('~ label, ~ .labe');
 				$(element).after(label);
 				//console.log(label);
 			});

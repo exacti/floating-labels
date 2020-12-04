@@ -1,11 +1,12 @@
 # floating-labels
 Floating Labels for Bootstrap
 
-![Sample text input](https://i.imgur.com/zGK4SkX.png) 
+![Sample text input](https://i.imgur.com/JxO24vv.png) 
 
 ## How to use
 
 First Include the stylesheet in your html. If you prefers, use this CDN: https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css
+
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css" media="screen">
 ```
@@ -13,7 +14,7 @@ Just put the input or textarea element inside a parent (div or span) with `.form
 
 The input and label must have the same id linked with for in label to work properly. Input must have the `placeholder` defined.
 
-For in border style (like outlined material design), add the `.in-border` class. 
+For in border style (like outlined material design), add the `.in-border` class. For fully outline style with transparency, use the `outline` class. If you use `outline` class, the label tag must be inside a span tag. The diference beteween in-border and outline is the background. In-border have a white background and outline is transparent with only border.
 
 #### Code samples
 
@@ -31,7 +32,9 @@ For in border style (like outlined material design), add the `.in-border` class.
 </div>
 ```
 
-Like outlined material design (In Border):
+Like outlined material design
+
+In-border:
 ```html
 <div class="form-label-group in-border">
     <input type="text" id="tt3" class="form-control form-control-lg" placeholder="Floating Label lg" />
@@ -39,7 +42,18 @@ Like outlined material design (In Border):
 </div>
 ```
 
+Outline:
+```html
+<div class="form-label-group outline">
+    <input type="text" id="tt2" class="form-control" placeholder="Floating Label" />
+    <span><label for="tt2">Floating Label</label></span>
+</div>
+```
+
 ### For intl-tel-input
+
+You can put the flag's container on the right using `iti-right` class.
+
 Make the label after input with JavaScript code, like this sample made with jQuery:
 ```JavaScript
 $('.intl-tel-input ~ label').insertAfter('.intl-tel-input input.form-control');

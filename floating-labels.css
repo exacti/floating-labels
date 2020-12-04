@@ -13,6 +13,12 @@
     --label-z-index: 5;
     --input-background-color: #ffffff;
     --top-position-in-border: 5px;
+    --outline-border-color: #80bdff;
+    --top-position-outline: -8px;
+    --normal-border-color: #ced4da;
+    --outline-border-size: .125rem;
+    --outline-animation-duration: .3s;
+    --outline-transition-type: linear;
 }
 .form-label-group {
     position: relative;
@@ -26,7 +32,7 @@
 .form-label-group input,
 .form-label-group textarea,
 .form-label-group label,
-.form-label-group:not(.in-border) select {
+.form-label-group:not(.in-border).form-label-group:not(.outline) select {
     padding: var(--input-padding-y) var(--input-padding-x);
 }
 
@@ -83,7 +89,7 @@
     padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group:not(.in-border) select {
+.form-label-group:not(.in-border).form-label-group:not(.outline) select {
     padding-bottom: 0;
 }
 
@@ -144,6 +150,11 @@
     height: auto;
 }
 
+.form-label-group.in-border input:not(:placeholder-shown) ~ label::after, .form-label-group.in-border input:focus ~ label::after, .form-label-group.in-border textarea:not(:placeholder-shown) ~ label::after, .form-label-group.in-border textarea:focus ~ label::after, .form-label-group.in-border select ~ label::after {
+    visibility: visible;
+    transition: all .2s ease;
+}
+
 .form-label-group.in-border label::after{
     content: " ";
     display: block;
@@ -154,6 +165,7 @@
     left: .7em;
     right: .7em;
     z-index: -1;
+    visibility: hidden;
 }
 
 .form-label-group.in-border input,
@@ -191,7 +203,7 @@
 }
 
 .form-label-group.iti-right .intl-tel-input label, .form-label-group.iti-right .iti label {
-    margin-left: auto;
+    margin-left: 0;
 }
 
 .form-label-group.iti-right .iti__country-list {
@@ -200,4 +212,253 @@
 
 .form-label-group .iti__country-list {
     z-index: calc(var(--label-z-index) + 2) !important;
+}
+
+
+
+/* Outline */
+
+.form-label-group.outline span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    color: var(--placeholder-color);
+    border-radius: .25rem;
+    transition: all .2s var(--outline-transition-type);
+    transform-origin: 0 0;
+    /* transform: translateY(-50%); */
+    text-align: left;/* 
+    visibility: hidden; */
+    z-index: var(--label-z-index);
+    height: 100%;
+    flex-wrap: wrap;
+    pointer-events: none;
+}
+
+.form-label-group.outline input.border-danger ~ span{
+    --normal-border-color: var(--danger, #dc3545);
+}
+.form-label-group.outline input.border-primary ~ span {
+    --normal-border-color: var(--primary, #007bff);
+}
+.form-label-group.outline input.border-secondary ~ span {
+    --normal-border-color: var(--secondary, #6c757d);
+}
+.form-label-group.outline input.border-success ~ span {
+    --normal-border-color: var(--success, #28a745);
+}
+.form-label-group.outline input.border-info ~ span {
+    --normal-border-color: var(--info, #17a2b8);
+}
+.form-label-group.outline input.border-warning ~ span {
+    --normal-border-color: var(--warning, #ffc107);
+}
+.form-label-group.outline input.border-light ~ span {
+    --normal-border-color: var(--light, #f8f9fa);
+}
+.form-label-group.outline input.border-dark ~ span {
+    --normal-border-color: var(--dark, #343a40);
+}
+.form-label-group.outline input.border-white ~ span{
+    --normal-border-color: var(--white, ##fff);
+}
+
+
+.form-label-group.outline input:focus, .form-label-group.outline textarea:focus, .form-label-group.outline select:focus {
+    box-shadow: none;
+}
+
+.form-label-group.outline input:not(:placeholder-shown) ~ span, .form-label-group.outline input:focus ~ span, .form-label-group.outline textarea:not(:placeholder-shown) ~ span, .form-label-group.outline textarea:focus ~ span, .form-label-group.outline select ~ span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    color: var(--placeholder-color);
+    border-radius: .25rem;
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+    transform-origin: 0 0;
+    /* transform: translateY(-50%); */
+    text-align: left;/* 
+    visibility: hidden; */
+    z-index: var(--label-z-index);
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.form-label-group.outline input ~ span::after, .form-label-group.outline input ~ span::after, .form-label-group.outline textarea ~ span::after, .form-label-group.outline textarea ~ span::after, .form-label-group.outline select ~ span::after {
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+    content: " ";
+    /* width: 1px;*/
+    width: 1px; 
+    flex: 1 0 auto;
+    border: var(--outline-border-size) solid var(--normal-border-color);
+    border-left: none;
+    position: relative;
+    right: 0px;
+    height: 100%;
+    visibility: hidden;
+    border-radius: 0 .25rem .25rem 0;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 1px;
+}
+
+.form-label-group.outline input:not(:placeholder-shown) ~ span::after, .form-label-group.outline input:focus ~ span::after, .form-label-group.outline textarea:not(:placeholder-shown) ~ span::after, .form-label-group.outline textarea:focus ~ span::after, .form-label-group.outline select ~ span::after {
+    height: 100%;
+    border: 1px solid var(--normal-border-color);
+    border-left: none;
+    content: " ";
+    display: block;
+    position: relative;
+    background: transparent;
+    /* top: 0px;
+    right: 0px; */
+    z-index: -1;
+    border-radius: 0 .25rem .25rem 0;
+    width: 100%;
+    max-width: 100%;
+    flex-grow: 1;
+    flex-basis: 0;
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+    visibility: visible;
+}
+.form-label-group.outline input:not(:placeholder-shown) ~ span::before, .form-label-group.outline input:focus ~ span::before, .form-label-group.outline textarea:not(:placeholder-shown) ~ span::before, .form-label-group.outline textarea:focus ~ span::before, .form-label-group.outline select ~ span::before {
+    height: 100%;
+    border: 1px solid var(--normal-border-color);
+    border-right: none;
+    content: " ";
+    display: block;
+    position: relative;
+    background: transparent;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    border-radius: .25rem 0 0 .25rem;
+    width: 100%;
+    flex: 0 0 9px;
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+}
+
+.form-label-group.outline label {
+    position: relative;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: auto;
+    margin-bottom: 0;
+    color: var(--placeholder-color);
+    border-radius: .25rem;
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+    /* transform: translateY(-50%); */
+    text-align: left;
+    /* visibility: hidden; */
+    z-index: var(--label-z-index);
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+    flex: 0 0 auto;
+    margin-right: auto;
+}
+
+.form-label-group.outline input:not(:placeholder-shown) ~ span label, .form-label-group.outline input:focus ~ span label, .form-label-group.outline textarea:not(:placeholder-shown) ~ span label, .form-label-group.outline textarea:focus ~ span label, .form-label-group.outline select ~ span label {
+    transform: none;
+    top: var(--top-position-outline);
+    font-size: .6rem;
+    padding: var(--input-padding-y) calc(var(--input-padding-x)/3);
+    padding-top: 0;
+    color: var(--placeholder-color);
+    margin: 0;
+    margin-right: auto;
+    /* padding-bottom: 0; */
+    /* height: fit-content; */
+    
+}
+
+.form-label-group.outline input:not(:placeholder-shown ), .form-label-group.outline input:focus , .form-label-group.outline textarea:not(:placeholder-shown) , .form-label-group.outline textarea:focus , .form-label-group.outline select {
+    border-top-color: transparent !important;
+    border-bottom-color: var(--normal-border-color);
+    border-bottom-width: 1px;
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+}
+
+.form-label-group.outline input,
+.form-label-group.outline textarea, 
+.form-label-group.outline label,
+.form-label-group.outline select {
+    background-color: transparent;
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+}
+
+.form-label-group.outline select ~ span::after, .form-label-group.outline select ~ span::before{
+    border-color: var(--normal-border-color);
+}
+
+.form-label-group.outline input, .form-label-group.outline label {
+    padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group.outline select {
+    border-bottom-color: var(--normal-border-color);
+}
+
+.form-label-group.outline select ~ span label {
+    color: var(--placeholder-color);
+}
+
+.form-label-group.outline.border-danger {
+    --outline-border-color: var(--danger, #dc3545);
+}
+.form-label-group.outline.border-primary {
+    --outline-border-color: var(--primary, #007bff);
+}
+.form-label-group.outline.border-secondary {
+    --outline-border-color: var(--secondary, #6c757d);
+}
+.form-label-group.outline.border-success {
+    --outline-border-color: var(--success, #28a745);
+}
+.form-label-group.outline.border-info {
+    --outline-border-color: var(--info, #17a2b8);
+}
+.form-label-group.outline.border-warning {
+    --outline-border-color: var(--warning, #ffc107);
+}
+.form-label-group.outline.border-light {
+    --outline-border-color: var(--light, #f8f9fa);
+}
+.form-label-group.outline.border-dark {
+    --outline-border-color: var(--dark, #343a40);
+}
+.form-label-group.outline.border-white {
+    --outline-border-color: var(--white, #fff);
+}
+
+.form-label-group.outline input:focus ~ span::before,  .form-label-group.outline textarea:focus ~ span::before, .form-label-group.outline input:focus ~ span::after,  .form-label-group.outline textarea:focus ~ span::after, .form-label-group.outline select:focus ~ span::after, .form-label-group.outline select:focus ~ span::before, .form-label-group.outline select:focus ~ span label{
+    border-color: var(--outline-border-color);
+    color: var(--outline-border-color) !important;
+    border-width: var(--outline-border-size);
+
+    transition: all var(--outline-animation-duration) var(--outline-transition-type);
+}
+.form-label-group.outline select:focus, .form-label-group.outline input:focus, .form-label-group.outline textarea:focus {
+    border-bottom-color: var(--outline-border-color) !important;
+    border-bottom-width: var(--outline-border-size);
+    transition: all .2s var(--outline-transition-type);
+}
+
+ .form-label-group.outline input:focus ~ span label, .form-label-group.outline textarea:focus ~ span label, .form-label-group.outline select:focus ~ span label {
+    color: var(--outline-border-color) !important;
+}
+
+
+/* fix ITI container */
+
+.form-label-group.outline .iti__flag-container span {
+    position: relative;
+    display: inline;
 }
